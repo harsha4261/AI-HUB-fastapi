@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    display: flex;
+    padding: 0 10px;
+    padding-top: 40px; /* Add top padding to account for the fixed back button */
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #52525a;
+    flex-direction: column;
+}
+
+.back-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 8px 16px;
+    font-size: 0.679rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn:hover {
+    background-color: #45a049;
+}
+
+#title {
+    font-size: 3rem;
+    margin: 1rem;
+    margin-top: 3rem; /* Add more top margin to prevent overlap with back button */
+    color: aliceblue;
+}
+
+.container {
+    display: flex;
+    width: 850px;
+    gap: 70px;
+    padding: 60px 40px;
+    background: #fff;
+    border-radius: 10px;
+    align-items: flex-end;
+    justify-content: space-between;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 10px; /* Add a bit of margin at the top */
+}
+
+.hangman-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hangman-box img {
+    user-select: none;
+    max-width: 270px;
+}
+
+.timer {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.game-box .word-display {
+    gap: 10px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.word-display .letter {
+    width: 28px;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #000;
+}
+
+.word-display .guessed {
+    color: #53545d;
+}
+
+.hint-text, .guesses-text {
+    margin: 10px 0;
+}
+
+.keyboard {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.keyboard button {
+    padding: 7px;
+    width: calc(100% / 9 - 5px);
+    font-size: 1rem;
+    text-transform: uppercase;
+    background: #53545d;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.keyboard button:hover {
+    background: #8286c9;
+}
+
+.keyboard button:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.game-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 0 10px;
+    transition: opacity 0.4s ease;
+}
+
+.game-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.game-modal .content {
+    padding: 30px;
+    max-width: 420px;
+    width: 100%;
+    border-radius: 10px;
+    background: #fff;
+    text-align: center;
+}
+
+.game-modal h4 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.game-modal p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.game-modal .play-again {
+    padding: 10px 25px;
+    font-size: 1rem;
+    background: #53545d;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.game-modal .play-again:hover {
+    background: #8286c9;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 850px) {
+    .container {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 30px 20px;
+    }
+    
+    .hangman-box img {
+        max-width: 200px;
+    }
+    
+    #title {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .keyboard button {
+        width: calc(100% / 7 - 5px);
+    }
+    
+    .word-display .letter {
+        width: 24px;
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+    }
+    
+    #title {
+        font-size: 2rem;
+        margin-top: 2.5rem; /* Adjusted for smaller screens */
+    }
+    
+    .container {
+        padding: 15px;
+    }
+}

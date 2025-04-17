@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI HUB Admin</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Admin Panel</h1>
+
+    <h2>Add Event</h2>
+    <form method="post" action="/admin/add-event">
+        <input type="text" name="topic" placeholder="Event Topic" required><br>
+        <input type="datetime-local" name="schedule" required><br>
+        <input type="text" name="speaker" placeholder="Speaker Name" required><br>
+        <input type="text" name="speaker_details" placeholder="Speaker Details"><br>
+        <input type="url" name="meet_url" placeholder="Meet URL"><br>
+        <button type="submit">Add Event</button>
+    </form>
+
+    <h2>Add Past Video</h2>
+    <form method="post" action="/admin/add-video">
+        <input type="url" name="vid_url" placeholder="Video URL" required><br>
+        <input type="text" name="desc" placeholder="Description"><br>
+        <button type="submit">Add Video</button>
+    </form>
+
+    <h2>All Events</h2>
+    <ul>
+        {% for event in events %}
+        <li>{{ event.topic }} - {{ event.schedule }} - {{ event.speaker }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>All Videos</h2>
+    <ul>
+        {% for video in videos %}
+        <li>{{ video.vid_url }} - {{ video.desc }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
