@@ -3,13 +3,11 @@ FROM "python:3.11"
 
 WORKDIR /app
 
-ENV PYTHONUNBUFFERED=1
-
-# Install pip and poetry
 COPY . /app
 
-RUN pip install poetry && poetry install
-
-CMD ["poetry", "run", "python", "main.py", "runserver", "0.0.0.0:8000", "--noreload"]
+RUN pip install --upgrade pip \
+ && pip install fastapi uvicorn sqlalchemy jinja2
 
 EXPOSE 8000
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
