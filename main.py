@@ -190,7 +190,7 @@ async def index_page(request: Request):
 
 @app.get("/about", response_class=HTMLResponse)
 async def about(request: Request):
-    return templates.TemplateResponse("about.html", {"request": request, "team_members": team_members})
+    return templates.TemplateResponse("About.html", {"request": request, "team_members": team_members})
 
 @app.get("/apps", response_class=HTMLResponse)
 async def apps(request: Request):
